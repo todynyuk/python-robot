@@ -10,6 +10,7 @@ ${filter3}  Новинки
 ${correctSearch}    AGM A9
 ${incorrectSearch}    jhvjhjhjhv
 ${index}    1
+#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
 
 
 *** Test Cases ***
@@ -74,3 +75,5 @@ goToSmartphones
 clickDropdownMenu
     [Arguments]    ${optionName}
     click element   xpath://select[contains(@class,'select-css')]/option[contains(text(),'${optionName}')]
+
+
