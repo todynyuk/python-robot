@@ -1,0 +1,29 @@
+*** Settings ***
+Library  SeleniumLibrary
+Variables    ../page_objects/locators.py
+
+*** Keywords ***
+launchingBrowser
+    [Arguments]     ${webUrl}   ${webBrowser}
+    open browser    ${webUrl}   ${webBrowser}
+    maximize browser window
+    set selenium speed  2seconds
+
+inputSearchField
+    [Arguments]     ${searchValue}
+    input text  ${search_input}    ${searchValue}
+
+
+clickSearchButton
+    click element   ${search_button}
+
+verifySearchTitle
+    [Arguments]     ${searchValue}
+    Element Should Contain    ${search_title_text}    ${searchValue}   Page not contains search text
+
+verifyProductTitle
+    [Arguments]     ${searchValue}
+    Element Should Contain    ${first_item_title_text}    ${searchValue}   Page not contains search text
+
+verifyNotFoundText
+    element should be enabled   ${not_found_text}

@@ -22,7 +22,7 @@ TableValidationTest
     table row should contain     ${table_xpath}    4   Learn JS
     table cell should contain     ${table_xpath}    5   2   Mukesh
     table header should contain     ${table_xpath}    BookName
-    close browser
+    [Teardown]  close browser
 
 
 *** Keywords ***

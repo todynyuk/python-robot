@@ -1,0 +1,5 @@
+search_input = "xpath://input[@name='search']"
+search_button = "xpath://button[contains(@class, 'button_color_green')]"
+first_item_title_text = "xpath://span[@class='goods-tile__title'][1]"
+not_found_text = "xpath://span[@class='ng-star-inserted']"
+search_title_text = "xpath://h1[contains(@class, 'catalog-heading')]"
