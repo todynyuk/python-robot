@@ -11,7 +11,6 @@ ${correctSearch}    AGM A9
 ${incorrectSearch}    jhvjhjhjhv
 ${index}    1
 
-
 *** Test Cases ***
 DropDownFilterEnabledTest
     launchingBrowser    ${url}   ${browser}
@@ -22,7 +21,7 @@ DropDownFilterEnabledTest
     Element Should Contain    //select[contains(@class,'select-css')]/option[1]    ${filter2}   Dropdown option not contains chosen text
     clickDropdownMenu   ${filter3}
     Element Should Contain    //select[contains(@class,'select-css')]/option[1]    ${filter3}   Dropdown option not contains chosen text
-
+    close browser
 
 CorrectSearchTest
     launchingBrowser    ${url}   ${browser}
@@ -37,7 +36,6 @@ IncorrectSearchTest
     element should be enabled   //span[@class='ng-star-inserted']
     close browser
 
-
 AlertWindowTest
     launchingBrowser    ${testurl}   ${browser}
     click button    xpath://button[contains(text(),'Click Me')]
@@ -48,7 +46,7 @@ AlertWindowTest
     handle alert    dismiss
     capture page screenshot    website.png
     Element Should Contain  //p[@id='demo']     You pressed Cancel!     Cancel text not found in this page
-
+    close browser
 
 *** Keywords ***
 launchingBrowser
@@ -75,4 +73,13 @@ clickDropdownMenu
     [Arguments]    ${optionName}
     click element   xpath://select[contains(@class,'select-css')]/option[contains(text(),'${optionName}')]
 
-
+verifyIsSearchTextPresentInGoodsTitle
+    ${counter}  set variable    0
+    @{links}    Get WebElements    //span[@class='goods-tile__title']
+    ${cnt}  get length    ${links}
+    FOR    ${element}    IN    @{links}
+        ${elem}  get text    ${element}
+        ${test_status}  should be true  '${correctSearch}' in '${elem}'
+        IF     ${test_status}   ${counter} + 1
+    END
+    [Return]    ${counter} == ${cnt}
