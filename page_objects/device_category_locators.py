@@ -1,0 +1,6 @@
+filter_links = "xpath://li[contains(@class,'selection')]//a[contains(@class,'link')]"
+ok_button = "xpath://button[contains(@class,'slider-filter__button')]"
+device_prices = "xpath://span[@class='goods-tile__price-value']"
+goods_title_text = "xpath://span[@class='goods-tile__title']"
+cart_goods_counter_text = "xpath://span[contains(@class,'badge--green')]"
+shopping_basket_button = "xpath://li[contains(@class,'cart')]/*/button[contains(@class,'header__button')]"

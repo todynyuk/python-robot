@@ -4,7 +4,7 @@ reporting:
   send-logs: true
   server:
     hostname: localhost:8080
-    access-token: gC8t96akR7dQ188VK0kihWJ57LqWiOoucbdqgL9JXpZMZVF5Gx
+    access-token: VKG03iQTVZMimPJtbBwEfWK38tVyOVv6DILPNcIfme6QUhaKcO
   notification:
     notify-on-each-failure: true
   run:
