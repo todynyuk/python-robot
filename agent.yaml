@@ -3,11 +3,12 @@ reporting:
   project-key: CR2
   send-logs: true
   server:
-    hostname: localhost:8080
+    hostname: https://solvdinternal.zebrunner.com
     access-token: VKG03iQTVZMimPJtbBwEfWK38tVyOVv6DILPNcIfme6QUhaKcO
   notification:
     notify-on-each-failure: true
   run:
     treat_skips_as_failures: false
-    display-name: Robot_Framework_Tests
-    environment: PyCharm
+    display-name: Nightly Regression Suite
+    build: 1.12.1.96-SNAPSHOT
+    environment: TEST-1
