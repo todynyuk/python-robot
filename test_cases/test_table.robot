@@ -6,6 +6,7 @@ ${testurl}  https://testautomationpractice.blogspot.com/
 ${table_xpath}  xpath://table[@name='BookTable']
 *** Test Cases ***
 TableValidationTest
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${testurl}   ${browser}
     ${rows_counter}=    get element count    xpath://table[@name='BookTable']/tbody/tr
     ${cols_counter}=    get element count    xpath://table[@name='BookTable']/tbody/tr[1]/th

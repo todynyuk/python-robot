@@ -6,6 +6,7 @@ ${testurl}  https://testautomationpractice.blogspot.com/
 
 *** Test Cases ***
 AlertWindowTest
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${testurl}   ${browser}
     click button    xpath://button[contains(text(),'Click Me')]
     alert should be present    Press a button!

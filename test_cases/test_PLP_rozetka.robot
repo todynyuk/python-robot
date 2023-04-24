@@ -15,6 +15,7 @@ ${filterHighToLow}  Від дорогих до дешевих
 
 *** Test Cases ***
 testVerifySortByPrice
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     click_universal_category_link   ${category}
     click_universal_subcategory_menu_link   ${subcategory}

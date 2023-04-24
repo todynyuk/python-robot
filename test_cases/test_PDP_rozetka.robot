@@ -13,6 +13,7 @@ ${subcategory}     Мобільні
 
 *** Test Cases ***
 ItemRamAndPriceTest
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     click_universal_category_link   ${category}
     click_universal_subcategory_menu_link   ${subcategory}

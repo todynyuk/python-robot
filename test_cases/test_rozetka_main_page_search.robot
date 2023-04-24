@@ -10,7 +10,7 @@ ${incorrectSearch}    jhvjhjhjhv
 
 *** Test Cases ***
 CorrectSearchTest
-    [Tags]    rozetka_search
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     inputSearchField  ${correctSearch}
     clickSearchButton
@@ -19,7 +19,7 @@ CorrectSearchTest
     [Teardown]  close browser
 
 IncorrectSearchTest
-    [Tags]    rozetka_search
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     inputSearchField  ${incorrectSearch}
     clickSearchButton
