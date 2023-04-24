@@ -9,6 +9,6 @@ reporting:
     notify-on-each-failure: true
   run:
     treat_skips_as_failures: false
-    display-name: Nightly Regression Suite
+    display-name: Robot_Tests
     build: 1.12.1.96-SNAPSHOT
-    environment: TEST-1
+    environment: PyCharm
