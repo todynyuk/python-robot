@@ -9,7 +9,9 @@ Resource    ../resources/device_page_keywords.robot
 ${browser}  chrome
 ${url}  https://rozetka.com.ua/ua/
 ${category}     Смартфони
+${second_category}  Ноутбуки
 ${subcategory}     Мобільні
+${second_subcategory}   моноблоки
 ${filterLowToHigh}  Від дешевих до дорогих
 ${filterHighToLow}  Від дорогих до дешевих
 ${count}
@@ -57,7 +59,7 @@ testAddingAndCountGoodsInBasket
     should be true    ${SecondCartGoodsCounterText}   Cart Goods Counter Text isn't presented
 
 
-testFilterByBrandNameMaxCustomPriceAndAvailable
+testFilterByBrandNameMaxCustomPrice
      [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     click_universal_category_link   ${category}
@@ -68,5 +70,34 @@ testFilterByBrandNameMaxCustomPriceAndAvailable
     clear_and_set_sorting_price     max     4000
     click_ok_button
     ${status}   check_is_goods_prices_less_than_choosen     5   4000
-    should be true    ${status}
+    should be true    ${status}     One or more things have price more than chosen
     ${brand_status}     verify_is_search_think_present_in_goods_title   Samsung
+    should be true    ${brand_status}   Search result don`t contains chosen brand
+
+
+testVerifyItemRamMatrixTypeAndProcessor
+#     [Tags]  maintainer=todynyuk
+    [Tags]  check
+    launchingBrowser    ${url}   ${browser}
+    click_universal_category_link   ${second_category}
+    click_universal_subcategory_menu_link   ${second_subcategory}
+    click_check_box_filter      Intel Core i5
+    click_check_box_filter      Моноблок
+    click_check_box_filter      8 ГБ
+    clickUniversalShowCheckBoxButton    Тип матриці
+    click_check_box_filter      IPS
+    click_check_box_filter      Новий
+    click_check_box_filter      Є в наявності
+    ${not_available_status}    check_is_all_goods_available   Немає в наявності
+    should be true    ${not_available_status}   One or more goods are not available
+    clickLinkMoreAboutDevice    1
+    ${verify_processor}  verifyChosenParameterInShortCharacteristics  Intel Core i5
+    should be true    ${verify_processor}     Processor name text not contains in about device text
+    ${verify_RAM}  verifyChosenParameterInShortCharacteristics  8 ГБ
+    should be true    ${verify_RAM}    Ram text not contains in about device text
+    ${verify_matrix_type}  verifyChosenParameterInShortCharacteristics  IPS
+    should be true    ${verify_matrix_type}     Matrix type text not contains in about device text
+    ${verify_pc_type}  verifyChosenParamInAllCharacteristics  Моноблок
+    should be true    ${verify_pc_type}     Computer type text not contains in description device text
+
+

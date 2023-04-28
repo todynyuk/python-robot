@@ -143,8 +143,6 @@ get_prices_list
      END
      [Return]    @{price_list}
 
-
-
 check_is_goods_prices_less_than_choosen
     [Arguments]      ${count}   ${chosen_max_price}
     ${buffer}     Convert To Integer  ${chosen_max_price}
@@ -181,6 +179,22 @@ verify_is_search_think_present_in_goods_title
      END
      ${status}   should be true    ${counter} == ${title_list_texts_lenght}
      [Return]    ${status}
+
+clickUniversalShowCheckBoxButton
+    [Arguments]     ${param}
+    click element   xpath://span[@class='sidebar-block__toggle-title' and contains (., '${param}')]
+
+check_is_all_goods_available
+    [Arguments]     ${param}
+    Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
+    ${zero}    convert to integer    0
+    ${count}   get element count    xpath://div[contains(@class,'goods-tile__availability') and contains(text(),'${param}')]
+    ${status}  convert to boolean    False
+    IF  ${count} == ${zero}
+        ${status}   convert to boolean    True
+    END
+    [Return]    ${status}
+
 
 
 
