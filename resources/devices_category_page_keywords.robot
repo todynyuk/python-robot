@@ -88,3 +88,99 @@ Get Price String As Integer
     ${price}=    Remove String    ${string}    ₴    ' '
     ${value}=    Convert To Integer   ${price}
     [Return]    ${value}
+
+check_chosen_filters_contains_chosen_brands
+    [Arguments]     ${brand_name}
+    @{chosen_filters}=     create list
+    ${counter}=  set variable    0
+    @{chosen_filtersText}    Get WebElements    ${filter_links}
+    FOR    ${element}    IN    @{chosen_filtersText}
+        ${counter}=     evaluate    ${counter} + 1
+        ${elem}  get text    ${element}
+        ${buffer}   replace string   ${elem}     ' '   ''
+        insert into list    ${chosen_filters}    ${counter}    ${buffer}
+        ${chosen_filtersTextlenth}  get length    ${chosen_filtersText}
+        exit for loop if    ${chosen_filtersTextlenth} == ${counter}
+    END
+    ${status}   list should contain value    ${chosen_filters}  brand_name
+    [Return]   ${status}
+
+isAddedToCartGoodsCounterTextPresent
+    ${zero}    convert to integer    0
+    ${count}   get element count    ${cart_goods_counter_text}
+    ${status}  convert to boolean    False
+    IF  ${count} != ${zero}
+        ${status}   convert to boolean    True
+    END
+    [Return]    ${status}
+
+clickBuyButtonByIndex
+    [Arguments]     ${index}
+    scroll element into view   xpath:(//button[contains(@class,'buy-button')])[${index}]
+    set focus to element    xpath:(//button[contains(@class,'buy-button')])[${index}]
+    click element   xpath:(//button[contains(@class,'buy-button')])[${index}]
+
+clear_and_set_sorting_price
+    [Arguments]    ${type}     ${value}
+    clear element text    //input[@formcontrolname='${type}']
+    input text    //input[@formcontrolname='${type}']   ${value}
+
+click_ok_button
+    click element    ${ok_button}
+
+get_prices_list
+    @{price_list}=     create list
+    @{price_elements}    Get WebElements    ${device_prices}
+    ${counter}=  set variable    0
+    ${buffer}=  set variable    0
+     FOR    ${element}    IN    @{price_elements}
+        ${counter}=     evaluate    ${counter} + 1
+        ${elem}  get text    ${element}
+        ${buffer}     Get Price String As Integer  ${elem}
+        insert into list    ${price_list}    ${counter}    ${buffer}
+        ${prices_list_length}  get length    ${price_elements}
+        exit for loop if    ${prices_list_length} == ${counter}
+     END
+     [Return]    @{price_list}
+
+
+
+check_is_goods_prices_less_than_choosen
+    [Arguments]      ${count}   ${chosen_max_price}
+    ${buffer}     Convert To Integer  ${chosen_max_price}
+    @{price_list}=     get_prices_list
+    ${price_listTextlenth}  get length    ${price_list}
+    ${counter}=  set variable    0
+    FOR    ${element}    IN    @{price_list}
+        IF    ${element} <= ${buffer}
+            ${counter}=     evaluate    ${counter} + 1
+        ELSE
+            ${counter}=     evaluate    ${counter} + 0
+        END
+        exit for loop if    ${counter} == ${price_listTextlenth}
+    END
+    [Return]    should be equal    ${counter}     ${price_listTextlenth}
+
+verify_is_search_think_present_in_goods_title
+    [Arguments]     ${value}
+     ${value_lower_case}    convert to lower case    ${value}
+     @{title_text_elements}    Get WebElements    ${goods_title_text}
+     ${title_list_texts_lenght}  get length    ${title_text_elements}
+     ${counter}=  set variable    0
+     FOR    ${element}    IN    @{title_text_elements}
+        ${elem}  get text    ${element}
+        ${element_lower_case}   convert to lower case    ${elem}
+        ${string}    Set Variable    ${element_lower_case}
+        ${contains_word}    Run Keyword And Return Status    Should Contain    ${string}    ${value_lower_case}
+        IF    '${contains_word}' == 'True'
+            ${counter}=     evaluate    ${counter} + 1
+        ELSE
+            ${counter}=     evaluate    ${counter} + 0
+       END
+        exit for loop if    ${counter} == ${title_list_texts_lenght}
+     END
+     ${status}   should be true    ${counter} == ${title_list_texts_lenght}
+     [Return]    ${status}
+
+
+

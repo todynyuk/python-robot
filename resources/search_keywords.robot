@@ -3,12 +3,6 @@ Library  SeleniumLibrary
 Variables    ../page_objects/main_page_locators.py
 
 *** Keywords ***
-#launchingBrowser
-#    [Arguments]     ${webUrl}   ${webBrowser}
-#    open browser    ${webUrl}   ${webBrowser}
-#    maximize browser window
-#    set selenium speed  2seconds
-
 inputSearchField
     [Arguments]     ${searchValue}
     input text  ${search_input}    ${searchValue}
