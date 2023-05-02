@@ -7,7 +7,6 @@ inputSearchField
     [Arguments]     ${searchValue}
     input text  ${search_input}    ${searchValue}
 
-
 clickSearchButton
     click element   ${search_button}
 

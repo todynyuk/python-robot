@@ -1,6 +1,5 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library  ExtendedSelenium2Library
 Library    String
 Library    Collections
 Variables    ../page_objects/device_category_locators.py
@@ -17,7 +16,7 @@ click_check_box_filter
 getSmartphonePriceText
     [Arguments]     ${index}
     ${data}=     get text    xpath:(//span[@class='goods-tile__price-value'])[${index}]
-    ${buffer}    get regexp matches    ${data}   \\d
+    ${buffer}     Get Price String As Integer  ${data}
     [Return]    ${buffer}
 
 clickLinkMoreAboutDevice
@@ -195,6 +194,15 @@ check_is_all_goods_available
     END
     [Return]    ${status}
 
+get_goods_title_text_by_index
+    [Arguments]     ${index}
+    ${data}=     get text    xpath:(//a[contains(@class,'goods-tile__heading')])[${index}]
+    [Return]    ${data}
 
+clickOnShoppingBasketButton
+    click element   ${shopping_basket_button}
 
-
+get_goods_description_text_by_index
+    [Arguments]     ${index}
+    ${data}=     get text    xpath:(//a[@data-testid='title'])[${index}]
+    [Return]    ${data}

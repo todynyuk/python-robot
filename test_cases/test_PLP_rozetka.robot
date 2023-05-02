@@ -4,6 +4,7 @@ Resource    ../resources/main_keywords.robot
 Resource    ../resources/subcategory_page_ keywords.robot
 Resource    ../resources/devices_category_page_keywords.robot
 Resource    ../resources/device_page_keywords.robot
+Resource    ../resources/shopping_basket_keywords.robot
 
 *** Variables ***
 ${browser}  chrome
@@ -15,7 +16,6 @@ ${second_subcategory}   моноблоки
 ${filterLowToHigh}  Від дешевих до дорогих
 ${filterHighToLow}  Від дорогих до дешевих
 ${count}
-
 
 *** Test Cases ***
 testVerifySortByPrice
@@ -57,6 +57,7 @@ testAddingAndCountGoodsInBasket
     clickBuyButtonByIndex   1
     ${SecondCartGoodsCounterText}     isAddedToCartGoodsCounterTextPresent
     should be true    ${SecondCartGoodsCounterText}   Cart Goods Counter Text isn't presented
+    ${goods_in_shopping_basket_count}      getGoodsInCartListSize
 
 
 testFilterByBrandNameMaxCustomPrice
@@ -76,8 +77,7 @@ testFilterByBrandNameMaxCustomPrice
 
 
 testVerifyItemRamMatrixTypeAndProcessor
-#     [Tags]  maintainer=todynyuk
-    [Tags]  check
+    [Tags]  maintainer=todynyuk
     launchingBrowser    ${url}   ${browser}
     click_universal_category_link   ${second_category}
     click_universal_subcategory_menu_link   ${second_subcategory}

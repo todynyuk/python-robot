@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+
 *** Variables ***
 ${browser}  chrome
 ${testurl}  https://testautomationpractice.blogspot.com/

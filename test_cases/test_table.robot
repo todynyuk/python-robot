@@ -1,9 +1,11 @@
 *** Settings ***
 Library  SeleniumLibrary
+
 *** Variables ***
 ${browser}  chrome
 ${testurl}  https://testautomationpractice.blogspot.com/
 ${table_xpath}  xpath://table[@name='BookTable']
+
 *** Test Cases ***
 TableValidationTest
     [Tags]  maintainer=todynyuk
