@@ -1,9 +1,9 @@
 *** Settings ***
 Library  SeleniumLibrary
-Resource    ../resources/main_keywords.robot
-Resource    ../resources/subcategory_page_ keywords.robot
-Resource    ../resources/devices_category_page_keywords.robot
-Resource    ../resources/shopping_basket_keywords.robot
+Resource    ../../resources/main_keywords.robot
+Resource    ../../resources/subcategory_page_ keywords.robot
+Resource    ../../resources/devices_category_page_keywords.robot
+Resource    ../../resources/shopping_basket_keywords.robot
 
 *** Variables ***
 ${browser}  chrome
