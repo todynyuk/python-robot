@@ -1,9 +1,9 @@
 *** Settings ***
 Library  SeleniumLibrary
-Resource    ../../resources/main_keywords.robot
-Resource    ../../resources/subcategory_page_ keywords.robot
-Resource    ../../resources/devices_category_page_keywords.robot
-Resource    ../../resources/device_page_keywords.robot
+Resource    ../../keywords/main_keywords.robot
+Resource    ../../keywords/subcategory_page_ keywords.robot
+Resource    ../../keywords/devices_category_page_keywords.robot
+Resource    ../../keywords/device_page_keywords.robot
 
 *** Variables ***
 ${browser}  chrome

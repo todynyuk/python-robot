@@ -4,19 +4,21 @@ Library    RequestsLibrary
 Library    JSONLibrary
 Library    Collections
 Library    String
+Library    OperatingSystem
 
 *** Variables ***
 ${base_url}     https://reqres.in/
 
-
 *** Test Cases ***
 test_get_list_users
-       [Tags]  maintainer=todynyuk
-       Create Session    mysession    ${base_url}
-       ${response}      get on session    mysession    api/users
-       ${status_code}=      Convert To String    ${response.status_code}
-       Should Be Equal      ${status_code}      200
-       Log To Console    ${status_code}
+    [Tags]  maintainer=todynyuk
+    Create Session    mysession    ${base_url}
+    ${response}      get on session    mysession    api/users
+    ${status_code}=      Convert To String    ${response.status_code}
+    ${json_str}    Convert To String    ${response.content}
+    Create File  ${EXECDIR}/resources/api/get/rs_list.json  ${json_str}
+    Should Be Equal      ${status_code}      200
+    Log To Console    ${status_code}
 
 test_get_request_and_validate_response
     [Tags]  maintainer=todynyuk
@@ -36,6 +38,8 @@ test_get_request_single_user_and_validate_response
     [Tags]  maintainer=todynyuk
     Create Session  mysession  ${base_url}  verify=true
     ${response}=  GET On Session  mysession  /api/users/2
+    ${json_str}    Convert To String    ${response.content}
+    Create File  ${EXECDIR}/resources/api/get/rs_single.json  ${json_str}
     Status Should Be  200  ${response}
     ${id}=   Get Value From Json  ${response.json()}  data.id
     ${idFromList}=  Get From List   ${id}  0
