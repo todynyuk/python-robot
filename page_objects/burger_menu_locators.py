@@ -1,0 +1,8 @@
+username_text = "//span[contains(@class,'user-name')]"
+active_language_text = "//span[contains(@class,'lang__link--active')]"
+my_orders = "//li[contains(@class,'side-menu__item')]//a[contains(@href,'orders')]"
+take_orders = "//li[contains(@class,'side-menu__item')]//a[contains(@href,'checkin')]"
+basket_button = "(//button[contains(@class,'side-menu__button')])[2]"
+destination_city_text = "//span[@class='city-toggle__text']"
+burger_menu_close_button = "//button[@data-testid='side-menu-close']"
+destination_city_change_button = "//button[contains(@class,'city-toggle')]"

@@ -14,6 +14,10 @@ get_chosen_product_price
     ${data}     get regexp matches    ${chosen_product_price}   \\d
     [Return]    ${data}
 
+chose_color_by_index
+    [Arguments]     ${index}
+    click element    (//a[contains(@class,'var-options__color')])[${index}]
+
 verifyChosenParameterInShortCharacteristics
     [Arguments]     ${param}
     ${value_lower_case}    convert to lower case    ${param}

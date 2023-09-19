@@ -4,19 +4,20 @@ Resource    ../../keywords/main_keywords.robot
 Resource    ../../keywords/subcategory_page_ keywords.robot
 Resource    ../../keywords/devices_category_page_keywords.robot
 Resource    ../../keywords/shopping_basket_keywords.robot
+Resource    ../../variables/variables.robot
 
 *** Variables ***
-${browser}  chrome
-${url}  https://rozetka.com.ua/ua/
-${category}     Смартфони
-${subcategory}     Мобільні
+#${browser}  chrome
+#${url}  https://rozetka.com.ua/ua/
+#${category}     Смартфони
+#${subcategory}     Мобільні
 
 *** Test Cases ***
 testUsualPriceItemAndInBasket
     [Tags]  maintainer=todynyuk
-    launchingBrowser    ${url}   ${browser}
-    click_universal_category_link   ${category}
-    click_universal_subcategory_menu_link   ${subcategory}
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    click_universal_category_link   ${SMARTPHONES_CATEGORY}
+    click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
     ${smartphone_price}  getSmartphonePriceText     1
     ${short_characteristics}  get_goods_title_text_by_index     1
     clickBuyButtonByIndex   1
@@ -32,9 +33,9 @@ testUsualPriceItemAndInBasket
 
 testAddGoodsInBasketAndCheckItEmpty
     [Tags]  maintainer=todynyuk
-    launchingBrowser    ${url}   ${browser}
-    click_universal_category_link   ${category}
-    click_universal_subcategory_menu_link   ${subcategory}
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    click_universal_category_link   ${SMARTPHONES_CATEGORY}
+    click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
     clickBuyButtonByIndex   1
     clickOnShoppingBasketButton
     ${CartGoodsCounterText}     isAddedToCartGoodsCounterTextPresent
