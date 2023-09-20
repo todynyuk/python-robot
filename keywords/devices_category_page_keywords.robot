@@ -60,7 +60,6 @@ getElementsNewestTexts
     FOR    ${element}    IN    @{labelItemText}
         ${counter}=     evaluate    ${counter} + 1
         ${elem}  get text    ${element}
-#        log to console    ${elem}
         insert into list    ${label_list}    ${counter}    ${elem}
         exit for loop if    ${count} == ${counter}
     END
@@ -70,16 +69,13 @@ isAllGoodsSortedByNewest
     [Arguments]    ${count}
     ${counter}=  set variable    0
     @{label_list} =    getElementsNewestTexts    ${count}
-#    log to console    Newest labels:
     FOR    ${element}    IN    @{label_list}
         log to console    ${element}
-#        IF    ${element1}  == 'НОВИНКА'
         IF    'НОВИНКА' in '${element}'
             ${counter}=     evaluate    ${counter} + 1
         ELSE
             ${counter}=     evaluate    ${counter} + 0
         END
-#        log to console    ${element1}
     END
     [Return]    ${counter}
 
@@ -122,7 +118,6 @@ Get Price String As Integer
 
 check_chosen_filters_contains_chosen_brands
     [Arguments]     ${brand_name}
-#    ${brand}=   set variable    ${brand_name}
     @{chosen_filters}=     create list
     ${counter}=  set variable    0
     @{chosen_filtersText}    Get WebElements    ${filter_links}
@@ -134,8 +129,6 @@ check_chosen_filters_contains_chosen_brands
         ${chosen_filtersTextlenth}  get length    ${chosen_filtersText}
         exit for loop if    ${chosen_filtersTextlenth} == ${counter}
     END
-#    ${status}   list should contain value    ${chosen_filters}  brand_name
-#    log to console    brand:    ${brand}
     ${status}   list should contain value    ${chosen_filters}    ${brand_name}
     [Return]   ${status}
 
@@ -217,14 +210,7 @@ verify_is_search_think_present_in_goods_title
        END
         exit for loop if    ${counter} == ${title_list_texts_lenght}
      END
-#     log to console    counter:${counter}
-#     log to console    title_list_texts_lenght:${title_list_texts_lenght}
-
-#     ${status}   should be true    ${counter} == ${title_list_texts_lenght}
-
-#     log to console    status:${status}
      [Return]    ${counter} == ${title_list_texts_lenght}
-#     [Return]    ${status}
 
 clickUniversalShowCheckBoxButton
     [Arguments]     ${param}

@@ -7,10 +7,6 @@ Resource    ../../keywords/shopping_basket_keywords.robot
 Resource    ../../variables/variables.robot
 
 *** Variables ***
-#${browser}  chrome
-#${url}  https://rozetka.com.ua/ua/
-#${category}     Смартфони
-#${subcategory}     Мобільні
 
 *** Test Cases ***
 testUsualPriceItemAndInBasket

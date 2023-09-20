@@ -14,10 +14,6 @@ Variables    ../../page_objects/chose_city_modal_window_locators.py
 Resource    ../../keywords/destination_city_keywords.robot
 
 *** Variables ***
-#${browser}  chrome
-#${url}  https://rozetka.com.ua/ua/
-#${category}     Смартфони
-#${subcategory}     Мобільні
 
 *** Test Cases ***
 ItemRamAndPriceTest
