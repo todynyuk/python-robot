@@ -47,7 +47,7 @@ jobs:
       - name: Robot Framework
         uses: tarathep/robotframework-github-action@v1.0
         with:
-          tests_dir: 'test_cases/rozetka_tests'
-          reports_dir: './'
+          tests_dir: '${{python-robot}}/test_cases/rozetka_tests'
+          reports_dir: 'reports'
       #- name: Run robot tests
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
