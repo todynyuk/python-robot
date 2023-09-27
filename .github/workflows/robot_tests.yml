@@ -44,6 +44,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-      - name: Run robot tests
-        run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
+      - name: Robot Framework
+        uses: tarathep/robotframework-github-action@v1.0
+        with:
+          tests_dir: 'test_cases/rozetka_tests'
+          reports_dir: './'
+      #- name: Run robot tests
+        #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
