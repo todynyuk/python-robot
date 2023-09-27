@@ -44,10 +44,25 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Robot Framework
-        uses: tarathep/robotframework-github-action@v1.0
-        with:
-          tests_dir: test_cases/rozetka_tests
-          reports_dir: tests/robot/reports
       #- name: Run robot tests
+        #run: robot *.robot
+      - name: Execute tests
+        uses: joonvena/robotframework-docker-action@v1.0
+        with:
+            robot_tests_dir: test_cases/rozetka_tests
+            screen_height: 1080
+            screen_width: 2560 
+      - name: Upload test results
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+            name: reports
+            path: reports
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Report and log
+          path: results/*.html
+          retention-days: 1
+        if: always()
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
