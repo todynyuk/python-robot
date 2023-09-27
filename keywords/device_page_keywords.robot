@@ -18,6 +18,10 @@ chose_color_by_index
     [Arguments]     ${index}
     click element    (//a[contains(@class,'var-options__color')])[${index}]
 
+click_bank_button_by_index
+    [Arguments]     ${index}
+    click element    (//button[contains(@class,'product-pictogram__button')])[${index}]
+
 verifyChosenParameterInShortCharacteristics
     [Arguments]     ${param}
     ${value_lower_case}    convert to lower case    ${param}

@@ -1,0 +1,1 @@
+device_photo = "//img[contains(@class,'product-photos__picture')]"

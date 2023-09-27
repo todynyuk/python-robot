@@ -59,7 +59,8 @@ testAddToWishlist
 
 
 testVerifySortByBrand
-    [Tags]  SortByBrand
+#    [Tags]  SortByBrand
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
@@ -69,14 +70,16 @@ testVerifySortByBrand
     should be true    ${brand_status}   Search result don`t contains chosen brand
 
 testIsSocialNetworkIconsPresent
-    [Tags]  SortByBrand
+#    [Tags]  SocialNetworkIcons
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
     element should be enabled
 
 testCompareItems
-    [Tags]  CompareItems
+#    [Tags]  CompareItems
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}

@@ -1,0 +1,6 @@
+main_item_price_value_text = "//div[contains(@class,'order-heading__price')]//p[@class='order-heading__value']"
+open_order_description_button = "//ul[contains(@class,'order-heading__goods')]"
+price_title_text = "//span[@class='order-tile__price']"
+checkout_payments_credit = "//div[contains(@class,'checkout-payments__credit')]"
+change_credit_options_button = "//div[@class='form__row']//button[contains(@class,'button--gray')]"
+credit_details_text = "//p[@class='checkout-payments__credit-heading']"

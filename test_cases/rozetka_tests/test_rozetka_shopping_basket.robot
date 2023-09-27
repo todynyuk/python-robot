@@ -38,3 +38,19 @@ testAddGoodsInBasketAndCheckItEmpty
     should be true    ${CartGoodsCounterText}   Cart Goods Counter Text isn't presented
     ${goods_in_shopping_basket_count}    getGoodsInCartListSize
     should be true    ${goods_in_shopping_basket_count} > 0   Basket is empty
+
+
+testAddGoodsInBasketDeleteAndCheckIsEmpty
+    [Tags]  WithoutLoginUser
+#    [Tags]  DeleteItem
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    click_universal_category_link   ${SMARTPHONES_CATEGORY}
+    click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
+    clickBuyButtonByIndex   1
+    clickOnShoppingBasketButton
+    ${goods_in_shopping_basket_count}    getGoodsInCartListSize
+    should be true    ${goods_in_shopping_basket_count} > 0   Basket is empty
+    click element   ${option_menu_button}
+    click element    ${delete_item_from_cart_button}
+    element should be enabled    ${empty_status_text}
+

@@ -1,17 +1,22 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library    String
-Resource    ../../keywords/main_keywords.robot
-Resource    ../../keywords/subcategory_page_ keywords.robot
+Resource    ../../keywords/destination_city_keywords.robot
 Resource    ../../keywords/devices_category_page_keywords.robot
 Resource    ../../keywords/device_page_keywords.robot
+Resource    ../../keywords/main_keywords.robot
+Resource    ../../keywords/subcategory_page_ keywords.robot
 Resource    ../../variables/variables.robot
 Resource    ../../keywords/utils.robot
 Resource    ../../page_objects/device_page_locators.py
 Variables    ../../page_objects/shopping_basket_locators.py
 Variables    ../../page_objects/burger_menu_locators.py
 Variables    ../../page_objects/chose_city_modal_window_locators.py
-Resource    ../../keywords/destination_city_keywords.robot
+Variables    ../../page_objects/device_photo_page_locators.py
+Variables    ../../page_objects/credit_modal_window_locators.py
+Variables    ../../page_objects/orders_page_locators.py
+
+
 
 *** Variables ***
 
@@ -32,7 +37,8 @@ ItemRamAndPriceTest
     [Teardown]  close browser
 
 CheckoutTest
-    [Tags]  Checkout
+#    [Tags]  Checkout
+     [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
@@ -45,7 +51,8 @@ CheckoutTest
     should contain    ${order_item_title}   ${good_title_text}
 
 CheckDestinationCityTest
-    [Tags]  DestinationCity
+#    [Tags]  DestinationCity
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
@@ -65,7 +72,8 @@ CheckDestinationCityTest
     should contain    ${pdp_destination_city_name_second}    ${burger_menu_city_name_second}
 
 CheckDeviceColorTest
-    [Tags]  DeviceColor
+#    [Tags]  DeviceColor
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
@@ -81,7 +89,8 @@ CheckDeviceColorTest
     should contain    ${second_device_info_text}   ${second_chosen_color}
 
 CheckCreditPaymentTest
-    [Tags]  CreditPayment
+#    [Tags]  CreditPayment
+    [Tags]  WithoutLoginUser
     launchingBrowser    ${URL}   ${BROWSER_CHROME}
     click_universal_category_link   ${SMARTPHONES_CATEGORY}
     click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
@@ -96,3 +105,32 @@ CheckCreditPaymentTest
     ${second_buffer}=    Remove String    ${second_chosen_credit_part_sum}    ₴ / місяць    ' '
     ${second_credit_part_sum}=    Convert To Integer   ${second_buffer}
     should not be equal    ${first_credit_part_sum}    ${second_credit_part_sum}
+
+CheckDevicePhotoTest
+#    [Tags]  DevicePhoto
+    [Tags]  WithoutLoginUser
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    click_universal_category_link   ${SMARTPHONES_CATEGORY}
+    click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
+    clickLinkMoreAboutDevice    3
+    click element    ${device_photo_link}
+    element should be enabled   ${device_photo}
+
+CheckByInCreditTest
+#    [Tags]  DevicePhoto
+    [Tags]  WithoutLoginUser
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    click_universal_category_link   ${SMARTPHONES_CATEGORY}
+    click_universal_subcategory_menu_link   ${SMARTPHONES_SUBCATEGORY}
+    clickLinkMoreAboutDevice    3
+    click_bank_button_by_index    2
+    click element    ${apply_for_button}
+    element should be enabled    ${checkout_payments_credit}
+    ${first_credit_info_text}     get text    ${credit_details_text}
+    click element    ${change_credit_options_button}
+    click element    (//button[@id='creditSubmitButton'])[1]
+    ${second_credit_info_text}      get text    ${credit_details_text}
+    should not be equal    ${first_credit_info_text}    ${second_credit_info_text}
+
+
+
