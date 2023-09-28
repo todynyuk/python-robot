@@ -36,6 +36,8 @@ jobs:
           webdrivermanager chrome
           cd test_cases
           ls
+          cd rozetka_tests
+          ls
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
