@@ -38,7 +38,7 @@ jobs:
           ls
           cd rozetka_tests
           ls
-          robot --include=BurgerMenu *.robot
+          robot --include=BurgerMenu test_rozetka_main_page.robot
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
