@@ -34,6 +34,7 @@ jobs:
           pip install robotframework-seleniumlibrary
           pip install webdrivermanager
           webdrivermanager chrome
+          cd test_cases
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
