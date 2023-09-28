@@ -46,12 +46,14 @@ jobs:
           echo test, and deploy your project.
       #- name: Run robot tests
         #run: robot *.robot
-      - name: Execute tests
-        uses: joonvena/robotframework-docker-action@v1.0
-        with:
-            robot_tests_dir: test_cases/rozetka_tests
-            screen_height: 1080
-            screen_width: 2560 
+      - name: Run robot tests
+        run:  ls
+      #- name: Execute tests
+        #uses: joonvena/robotframework-docker-action@v1.0
+        #with:
+            #robot_tests_dir: test_cases/rozetka_tests
+            #screen_height: 1080
+            #screen_width: 2560 
       - name: Upload test results
         uses: actions/upload-artifact@v1
         if: always()
