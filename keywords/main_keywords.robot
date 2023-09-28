@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables    ../page_objects/main_page_locators.py
+#Variables    ../page_objects/main_page_locators.py
+Variables    ..${/}page_objects${/}main_page_locators.py
 
 *** Keywords ***
 launchingBrowser
