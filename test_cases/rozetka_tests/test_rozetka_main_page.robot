@@ -1,7 +1,5 @@
 *** Settings ***
 Library  SeleniumLibrary
-#Test Setup      Open Browser  browser=headlesschrome
-#Test Teardown	Close Browser
 Library    String
 Resource    ../../keywords/search_keywords.robot
 #Resource    ../../keywords/main_keywords.robot
@@ -73,9 +71,15 @@ ${incorrectSearch}  jhvjhjhjhv
 
 BurgerMenuTest
     [Tags]  BurgerMenu
-    Create Webdriver    Chrome    executable_path=driver/chromedriver
-    Go To  ${URL}
 #    [Tags]  WithoutLoginUser
+#-----------------------------------------------------------------------------------------------
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+
+    Call Method    ${options}  add_argument  --no-sandbox
+
+    Create WebDriver   Chrome  chrome_options=${options}
+    Go to     ${URL}
+#-----------------------------------------------------------------------------------------------
 #    launchingBrowser    ${URL}   ${BROWSER_CHROME}
     ${main_language_text}   get text    ${active_language_text}
     click element  ${burger_menu}
