@@ -1,5 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
+Test Setup      Open Browser  browser=headlessfirefox
+Test Teardown	Close Browser
 Library    String
 Resource    ../../keywords/search_keywords.robot
 #Resource    ../../keywords/main_keywords.robot
@@ -71,8 +73,9 @@ ${incorrectSearch}  jhvjhjhjhv
 
 BurgerMenuTest
     [Tags]  BurgerMenu
+    Go To  ${URL}
 #    [Tags]  WithoutLoginUser
-    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+#    launchingBrowser    ${URL}   ${BROWSER_CHROME}
     ${main_language_text}   get text    ${active_language_text}
     click element  ${burger_menu}
     ${burger_menu_language_text}    get text    ${active_language_text}
