@@ -33,14 +33,16 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install webdrivermanager==0.9.0
-          webdrivermanager chrome
-          echo First_Chromedriver_version:
-          chromedriver -v
-          echo This is some path:
-          cd /home/runner/.local/share/WebDriverManager/chrome/114.0.5735.90/chromedriver_linux64
-          ls
-          echo Second_Chromedriver_version:
-          chromedriver -v
+          
+      - uses: actions/checkout@v2
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+    # Optional: do not specify to match Chrome's version
+              chromedriver-version: '114.0.5735.90'
+      - run: |
+            export DISPLAY=:99
+            chromedriver --url-base=/wd/hub &
+            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
