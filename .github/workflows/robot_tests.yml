@@ -32,8 +32,11 @@ jobs:
           pip install -r requirements.txt
           pip install robotframework
           pip install robotframework-seleniumlibrary
-          pip install webdrivermanager
-          webdrivermanager chrome
+          cd test_cases
+          ls
+          cd rozetka_tests
+          ls
+          robot --include=BurgerMenu test_rozetka_main_page.robot
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
