@@ -32,10 +32,13 @@ jobs:
           pip install -r requirements.txt
           pip install robotframework
           pip install robotframework-seleniumlibrary
-          pip install webdrivermanager
+          pip install webdrivermanager==0.9.0
           webdrivermanager chrome
           echo This is some path:
-          echo $PATH
+          cd /home/runner/.local/share/WebDriverManager/chrome/114.0.5735.90/chromedriver_linux64/chromedriver
+          ls
+          echo Chromedriver_version:
+          chromedriver -v
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
