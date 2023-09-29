@@ -1,7 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
-Test Setup      Open Browser  browser=headlessfirefox
-Test Teardown	Close Browser
+#Test Setup      Open Browser  browser=headlesschrome
+#Test Teardown	Close Browser
 Library    String
 Resource    ../../keywords/search_keywords.robot
 #Resource    ../../keywords/main_keywords.robot
@@ -73,6 +73,7 @@ ${incorrectSearch}  jhvjhjhjhv
 
 BurgerMenuTest
     [Tags]  BurgerMenu
+    Create Webdriver    Chrome    executable_path=driver/chromedriver
     Go To  ${URL}
 #    [Tags]  WithoutLoginUser
 #    launchingBrowser    ${URL}   ${BROWSER_CHROME}
