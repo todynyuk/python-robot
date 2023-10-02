@@ -82,9 +82,9 @@ BurgerMenuTest
     Go to     https://rozetka.com.ua/ua/
 #-----------------------------------------------------------------------------------------------
 #    launchingBrowser    ${URL}   ${BROWSER_CHROME}
-    ${main_language_text}   get text    ${active_language_text}
+    ${main_language_text}   get text    //span[contains(@class,'lang__link--active')]
     click element  ${burger_menu}
-    ${burger_menu_language_text}    get text    ${active_language_text}
+    ${burger_menu_language_text}    get text    //span[contains(@class,'lang__link--active')]
     should be equal    ${main_language_text}     ${burger_menu_language_text}
 
 #BurgerMenuLoginTest
