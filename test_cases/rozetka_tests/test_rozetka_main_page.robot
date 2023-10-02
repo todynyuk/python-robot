@@ -83,6 +83,7 @@ BurgerMenuTest
     sleep    5s
     select frame    //iframe[@title='Widget containing a Cloudflare security challenge']
     click element    //label[@class='ctp-checkbox-label']
+    sleep    10s
 #-----------------------------------------------------------------------------------------------
 #    launchingBrowser    ${URL}   ${BROWSER_CHROME}
     ${main_language_text}   get text    //span[contains(@class,'lang__link--active')]
