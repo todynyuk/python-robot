@@ -38,7 +38,8 @@ jobs:
       - uses: nanasess/setup-chromedriver@v2
         with:
     # Optional: do not specify to match Chrome's version
-              chromedriver-version: '114.0.5735.90'
+              #chromedriver-version: '114.0.5735.90'
+              chromedriver-version: '117.0.5938.92'
       - run: |
             export DISPLAY=:99
             chromedriver --url-base=/wd/hub &
