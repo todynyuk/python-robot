@@ -47,7 +47,25 @@ jobs:
             sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
             echo Chromedriver_version:
             chromedriver -v
-
+      - name: Execute tests
+        uses: joonvena/robotframework-docker-action@v1.0
+        with:
+            robot_tests_dir: test_cases/rozetka_tests
+            screen_height: 1080
+            screen_width: 2560 
+      - name: Upload test results
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+            name: reports
+            path: reports
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Report and log
+          path: results/*.html
+          retention-days: 1
+        if: always()
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -67,3 +85,5 @@ jobs:
           ls
           robot --include=BurgerMenu test_rozetka_main_page.robot
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
+
+
