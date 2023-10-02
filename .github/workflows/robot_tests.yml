@@ -55,7 +55,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      #- name: Run robot tests
+      - name: Run robot tests
         #run: robot *.robot
-      
+        run: |
+          cd test_cases
+          ls
+          cd rozetka_tests
+          echo There should be test files:
+          ls
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
