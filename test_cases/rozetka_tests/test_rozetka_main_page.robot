@@ -73,14 +73,14 @@ BurgerMenuTest
     [Tags]  BurgerMenu
 #    [Tags]  WithoutLoginUser
 #-----------------------------------------------------------------------------------------------
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-
-    Call Method    ${options}  add_argument  --no-sandbox
-
-    Create WebDriver   Chrome  chrome_options=${options}
-    Go to     ${URL}
+#    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+#
+#    Call Method    ${options}  add_argument  --no-sandbox
+#
+#    Create WebDriver   Chrome  chrome_options=${options}
+#    Go to     ${URL}
 #-----------------------------------------------------------------------------------------------
-#    launchingBrowser    ${URL}   ${BROWSER_CHROME}
+    launchingBrowser    ${URL}   ${BROWSER_CHROME}
     ${main_language_text}   get text    ${active_language_text}
     click element  ${burger_menu}
     ${burger_menu_language_text}    get text    ${active_language_text}
