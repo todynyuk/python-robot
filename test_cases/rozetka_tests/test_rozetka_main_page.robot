@@ -78,7 +78,8 @@ BurgerMenuTest
     Call Method    ${options}  add_argument  --no-sandbox
 
     Create WebDriver   Chrome  chrome_options=${options}
-    Go to     ${URL}
+#    Go to     ${URL}
+    Go to     https://rozetka.com.ua/ua/
 #-----------------------------------------------------------------------------------------------
 #    launchingBrowser    ${URL}   ${BROWSER_CHROME}
     ${main_language_text}   get text    ${active_language_text}
