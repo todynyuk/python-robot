@@ -80,6 +80,7 @@ BurgerMenuTest
     Create WebDriver   Chrome  chrome_options=${options}
 #    Go to     ${URL}
     Go to     https://rozetka.com.ua/ua/
+    sleep    5s
     select frame    //iframe[@title='Widget containing a Cloudflare security challenge']
     click element    //label[@class='ctp-checkbox-label']
 #-----------------------------------------------------------------------------------------------
