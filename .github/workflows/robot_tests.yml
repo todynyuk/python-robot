@@ -63,4 +63,5 @@ jobs:
           cd rozetka_tests
           echo There should be test files:
           ls
+          robot --include=BurgerMenu test_rozetka_main_page.robot
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
