@@ -32,8 +32,19 @@ jobs:
           pip install -r requirements.txt
           pip install robotframework
           pip install robotframework-seleniumlibrary
-          pip install webdrivermanager
-          webdrivermanager chrome
+          pip install webdrivermanager==0.9.0
+          
+      - uses: actions/checkout@v2
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+    # Optional: do not specify to match Chrome's version
+              chromedriver-version: '114.0.5735.90'
+      - run: |
+            export DISPLAY=:99
+            chromedriver --url-base=/wd/hub &
+            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+            echo Chromedriver_version:
+            chromedriver -v
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -44,25 +55,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      #- name: Run robot tests
+      - name: Run robot tests
         #run: robot *.robot
-      - name: Execute tests
-        uses: joonvena/robotframework-docker-action@v1.0
-        with:
-            robot_tests_dir: test_cases/rozetka_tests
-            screen_height: 1080
-            screen_width: 2560 
-      - name: Upload test results
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-            name: reports
-            path: reports
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Report and log
-          path: results/*.html
-          retention-days: 1
-        if: always()
+        run: |
+          cd test_cases
+          ls
+          cd rozetka_tests
+          echo There should be test files:
+          ls
+          robot --include=BurgerMenu test_rozetka_main_page.robot
         #run: robot --include=WithoutLoginUser test_cases/rozetka_tests/*.robot
