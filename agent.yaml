@@ -3,12 +3,12 @@ reporting:
   project-key: CR2
   send-logs: true
   server:
-    hostname: localhost:8080
-    access-token: gC8t96akR7dQ188VK0kihWJ57LqWiOoucbdqgL9JXpZMZVF5Gx
+    hostname: https://solvdinternal.zebrunner.com
+    access-token: VKG03iQTVZMimPJtbBwEfWK38tVyOVv6DILPNcIfme6QUhaKcO
   notification:
     notify-on-each-failure: true
   run:
     treat_skips_as_failures: false
-    display-name: Robot_Framework_Tests
+    display-name: Robot_Tests
     build: 1.12.1.96-SNAPSHOT
     environment: PyCharm

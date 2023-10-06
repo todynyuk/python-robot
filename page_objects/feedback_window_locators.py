@@ -1,0 +1,6 @@
+modal_window = "//div[contains(@class,'modal__holder')]"
+button_preview_photo = "//div[contains(@class,'carousel')]/following::button[contains(@class,'control--prev')]"
+button_next_photo = "//div[contains(@class,'carousel')]/following::button[contains(@class,'control--next')]"
+active_photo_indicator = "//span[contains(@class,'indicators__item active')]"
+photo_indicator_item_list = "//span[contains(@class,'indicators__item')]"
+modal_close_button = "//button[@class='modal__close']"

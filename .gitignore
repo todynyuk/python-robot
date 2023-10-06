@@ -133,5 +133,6 @@ report.html
 output.xml
 log.html
 driver/
+playwright-log.txt
 
 

@@ -1,0 +1,1 @@
+seller_page_main_text = "//h1[contains(@class,'seller__heading')]"

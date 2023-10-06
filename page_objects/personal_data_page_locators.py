@@ -1,0 +1,2 @@
+last_name_text = "//label[@for='lastName']/following-sibling::p[contains(@class,'personal-data__value')]"
+first_name_text = "//label[@for='firstName']/following-sibling::p[contains(@class,'personal-data__value')]"
