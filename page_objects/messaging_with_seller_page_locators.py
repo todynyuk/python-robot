@@ -1,0 +1,6 @@
+messages_form = "//div[@class='messages ng-star-inserted']"
+seller_page_link = "//div[contains(@class,'chat-header')]//a[contains(@href,'seller')]"
+messages_sidebar = "//div[@class='messages-sidebar']"
+chat_attachments_button = "//button[@class='chat__attach']"
+chat_message_input_field = "//textarea[@id='chatMessageTextarea']"
+send_message_button = "//button[@class='typewriter__button']"

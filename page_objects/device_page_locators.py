@@ -7,5 +7,5 @@ pdp_buy_button = "//app-buy-button[contains(@class,'mode-slim')]"
 destination_city_pdp = "//span[contains(@class,'product-delivery')]//p[contains(@class,'product-delivery')]"
 active_color_text = "//p[@class='var-options__label']"
 buy_in_credit_button = "//button[contains(@class,'credit-button')]"
-device_photo_link =  "//a[contains(@href,'photo')]"
-
+device_photo_link = "//a[contains(@href,'photo')]"
+comments_link = "//a[@class='tabs__link' and contains(@href,'comments')]"

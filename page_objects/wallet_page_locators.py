@@ -1,0 +1,7 @@
+add_card_button = "//button[contains(@class,'wallet-cards__add')]"
+card_form = "//div[@class='card']"
+card_number_input_field = "//input[@id='cardNumber']"
+month_input_field = "//input[@id='month']"
+year_input_field = "//input[@id='year']"
+cvv_input_field = "//input[@id='cvv']"
+submit_button = "//button[contains(@class,'btn-submit')]"
